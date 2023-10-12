@@ -1,2 +1,3 @@
 ---
-# defaults file for security
+# Ports to close, in this case POP3 and Telnet
+ports_to_close: 23,110
