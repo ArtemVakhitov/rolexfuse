@@ -4,6 +4,7 @@
   iptables:
     chain: INPUT
     protocol: tcp
-    destination_ports: "{{ ports_to_close }}"
+    destination_ports: "{{ item }}"
     jump: DROP
   become: yes
+  with_items: "{{ ports_to_close }}"
