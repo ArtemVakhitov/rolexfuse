@@ -1,2 +1,23 @@
 ---
 # tasks file for buildserver
+- name: Ensure required packages are present
+  apt: name={{ item }} state=present
+  with_items: [git, maven]
+
+- name: Clone boxfuse repo
+  git:
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    dest: {{ workdir }}/boxfuse-sample-java-war-hello
+
+- name: Build boxfuse using maven
+  shell:
+    chdir: {{ workdir }}/boxfuse-sample-java-war-hello/
+    executable: /bin/bash
+    cmd: mvn package
+    creates: {{ workdir }}/boxfuse-sample-java-war-hello/target/hello-1.0.war
+
+- name: Fetch built WAR from build host
+  fetch:
+    src: {{ workdir }}/boxfuse-sample-java-war-hello/target/hello-1.0.war
+    dest: {{ builtappdir }}
+    flat: yes
