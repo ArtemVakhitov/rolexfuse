@@ -19,5 +19,5 @@
 - name: Fetch built WAR from build host
   fetch:
     src: "{{ workdir }}/boxfuse-sample-java-war-hello/target/hello-1.0.war"
-    dest: "{{ builtappdir }}"
+    dest: "{{ builtappdir }}/"
     flat: yes
