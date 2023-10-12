@@ -1,2 +1,12 @@
 ---
 # tasks file for appserver
+- name: Ensure tomcat pkg is present
+  apt:
+    name: tomcat8
+    state: present
+
+- name: Copy built WAR to app host
+  copy:
+    src: {{ builtapp }}
+    dest: {{ webapps }}
+  notify: Restart tomcat
