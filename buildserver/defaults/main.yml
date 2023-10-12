@@ -1,2 +1,4 @@
 ---
 # defaults file for buildserver
+workdir: /usr/src
+builtappdir: /tmp
