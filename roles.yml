@@ -1,0 +1,16 @@
+---
+- name: Build server config
+  hosts: build
+  become: yes
+
+  roles: 
+    - buildserver
+    - security
+
+- name: App server config
+  hosts: app
+  become: yes
+  
+  roles: 
+    - appserver
+    - security
