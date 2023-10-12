@@ -1,2 +1,9 @@
 ---
 # tasks file for security
+- name: Close ports
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_ports: "{{ ports_to_close }}"
+    jump: DROP
+  become: yes
