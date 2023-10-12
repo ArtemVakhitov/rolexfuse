@@ -1,2 +1,4 @@
 ---
 # defaults file for appserver
+webapps: /var/lib/tomcat8/webapps
+builtapp: /tmp/hello-1.0.war
